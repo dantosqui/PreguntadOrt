@@ -24,7 +24,7 @@ public static List<Preguntas> ObtenerPreguntas(int dificultad, int categoria){
 if(dificultad != -1 && categoria != -1){
        using(SqlConnection db = new SqlConnection(_connectionString)){
         string sql = "select * from Preguntas where Preguntas.IdDificultad = @dif and Preguntas.IdCategoria = @cat";
-        return db.Query<Preguntas>(sql, new {@dif = dificultad}, new {@cat = categoria}).ToList(); 
+        return db.Query<Preguntas>(sql, new {@dif = dificultad, @cat=categoria}).ToList(); 
     }
 }else if (dificultad == -1 && categoria != -1){
 using(SqlConnection db = new SqlConnection(_connectionString)){
@@ -52,10 +52,11 @@ using(SqlConnection db = new SqlConnection(_connectionString)){
 //nose si esta bien hay que ver no se me ocurrio asi otra forma de hacerlo
 public static List<Respuestas> ObtenerRespuestas(List<Preguntas> preguntas){
   List<Respuestas> listaQuery = new List<Respuestas>();
+  List<Respuestas> resp = new List<Respuestas>();
     for (int i = 0;i<preguntas.Count;i++){
         using(SqlConnection db = new SqlConnection(_connectionString)){
         string sql = "select * from Respuestas where Respuestas.IdPregunta = @preg";
-        List<Respuestas> resp = db.Query<Categorias>(sql, new{@preg = preguntas[i].IdPregunta}).ToList(); 
+        resp = db.Query<Respuestas>(sql, new{@preg = preguntas[i].IdPregunta}).ToList(); 
         }
         listaQuery.AddRange(resp);
     }

@@ -1,13 +1,13 @@
-static public class juego{
+static public class Juego{
     static private string _username;
     static private int _puntajeActual;
     static private int _cantidadPreguntasCorrectas;
     static private List<Preguntas> _preguntas;
     static private List<Respuestas> _respuestas;
-    Random rnd = new Random();
+    static private Random rnd = new Random();
 
     static public void InicializarJuego(){
-        _username=NULL;
+        _username="";
         _puntajeActual=0;_cantidadPreguntasCorrectas=0;
     }
     static public List<Categorias> ObtenerCategorias(){
@@ -18,26 +18,33 @@ static public class juego{
     }
     static public void CargarPartida(string username,int dificultad, int categoria){
         _username=username;
-        _preguntas=ObtenerPreguntas(dificultad, categoria);
-        _respuestas=ObtenerRespuestas(_preguntas);
+        _preguntas=BD.ObtenerPreguntas(dificultad, categoria);
+        _respuestas=BD.ObtenerRespuestas(_preguntas);
     }
     static public Preguntas ObtenerProximaPregunta(){
         return _preguntas[rnd.Next(0,_preguntas.Count())];
     }
-    static public List<Respuestas> ObtenerProximasRespuestas(int Idpregunta){
+    static public List<Respuestas> ObtenerProximasRespuestas(int idPregunta){
         
         List<Respuestas> respuestas = new List<Respuestas>();
         int i=-1;
         bool enc=false;
         while (i<_respuestas.Count()){
             i++;
-            if(_respuestas[i].IdPregunta==idpregunta)respuestas.Add(respuestas[i]);
+            if(_respuestas[i].IdPregunta==idPregunta)respuestas.Add(respuestas[i]);
         }
         return respuestas;
     }
-    static public bool VerificarRespuesta(int idPregunta, int idRespuesta){
-        //estoy re duro mandame tambien por aca la respuesta correcta ;)
-            
+    static public Respuestas[] VerificarRespuesta(int idPregunta, int idRespuesta){
+        Respuestas rtaEnviada= _respuestas.Find(x=>x.IdRespuesta==idRespuesta);
+        if (rtaEnviada.Correcta){
+            _puntajeActual++;
+            _cantidadPreguntasCorrectas++;
+            _preguntas.Remove(_preguntas.Find(x=>x.IdPregunta==idPregunta));
+        }
+        //ACORDARSE: MANDA PRIMERO RESPUESTA ENVIADA Y DESPUES RESPUESTA CORRECTA
+        Respuestas[] rtaenviadaycorrecta = {rtaEnviada, _respuestas.Find(x=>x.IdPregunta==idPregunta && x.Correcta)};
+        return rtaenviadaycorrecta; 
     }
 
    
