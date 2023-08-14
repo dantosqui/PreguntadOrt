@@ -47,6 +47,12 @@ static public class Juego{
         return rtaenviadaycorrecta; 
     }
 
-   
+   static public int DevolverCantPreguntas(){
+        return _cantidadPreguntasCorrectas;
+   }
+   static public Categorias DevolverCategoriaPregunta(Pregunta preg){
+        ;
+
+   }
     
 }

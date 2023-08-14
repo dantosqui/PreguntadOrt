@@ -13,7 +13,7 @@ public class HomeController : Controller
         Juego.InicializarJuego();
         ViewBag.Categorias = BD.ObtenerCategorias();
         ViewBag.Dificultades = BD.ObtenerDificultades();
-        return ConfigurarJuego();
+        return View();
     }
 
     public IActionResult Comenzar(string username, int dificultad, int categoria){
@@ -28,6 +28,7 @@ public class HomeController : Controller
 
     public IActionResult Jugar(){
         
+        ViewBag.NumPregunta=Juego.DevolverCantPreguntas();
         ViewBag.Pregunta = Juego.ObtenerProximaPregunta();
         if(ViewBag.Pregunta != null /*nose despues vemos*/){
         ViewBag.Respuestas = Juego.ObtenerProximasRespuestas(ViewBag.Pregunta.IdPregunta);

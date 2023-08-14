@@ -10,12 +10,30 @@ html {
   }
 }
 
-body {
-  margin: 20px 60px 0px 20px;
-}
-
 footer {
   position: fixed; 
   bottom: 0; 
   margin: 10px 0px 20px 0px;
+}
+
+.centrar{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  margin-top: 5%;
+  text-align: center;
+}
+
+#boton{
+  position: absolute;
+  margin-top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;  
+}
+
+#boton button{
+  width: 100%;
 }
