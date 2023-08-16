@@ -1,0 +1,19 @@
+@if(ViewBag.RespuestaCorrecta){
+    <h1>CORRECTO!</h1>
+    <img src="">
+    <p>+ @ViewBag puntos</p>
+}
+else{
+    <h1>INCORRECTO!</h1>
+    <img src="">
+    <p>Respuesta correcra: @ViewBag</p>
+}
+
+<div>
+    <p>Puntos: @ViewBag</p>
+    <p>Usuario: @ViewBag</p>
+</div>
+
+<a href='@Url.Action("Jugar")' id="boton">
+    <button type="button" class="btn btn-outline-success">Siguiente pregunta</button>
+</a>

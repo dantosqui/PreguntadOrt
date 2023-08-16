@@ -2,5 +2,19 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Pregunta @ViewBag.NumPregunta</h1> 
-<h2>Categoria: @ViewBag.Pregunta.Categoria</h2>
+<div id="preguntaycategoria">
+    <h2>Pregunta @ViewBag.NumPregunta</h2> 
+    <h3>Categoria: @ViewBag.Pregunta.Categoria</h3>
+    <div id="timer">
+        <div id="countdown"></div>
+    </div>
+</div>
+
+<div id="preguntayrtas">
+    <h1>@ViewBag.Pregunta.Enunciado</h1>
+    <form action="@Url.Action(VerificarRespuesta)">
+    <div id="rtas">
+
+    </div>
+    </form>
+</div>

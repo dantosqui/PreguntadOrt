@@ -1,22 +1,39 @@
 @{
     ViewData["Title"] = "Index";
 }
+<div class="centrar">
 <form>
+
 <p>Categorias: </p>
+<select class="form-select" aria-label="categorias" style="width:6vw">
+ <option selected>@ViewBag.Categorias[0].Nombre</option>
+@for(int i = 1; i<ViewBag.Categorias.Count;i++){
 
+  <option value='@ViewBag.Categorias[i].Nombre'>@ViewBag.Categorias[i].Nombre</option>
+
+}
+</select>
+</div>
+<div class="configuracion">
 <p>Dificultades: </p>
-<div class="form-check">
-  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-  <label class="form-check-label" for="flexRadioDefault1">
-    Default radio
-  </label>
-</div>
-<div class="form-check">
-  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-  <label class="form-check-label" for="flexRadioDefault2">
-    Default checked radio
-  </label>
-</div>
-<p>Username: </p>
+<select class="form-select" aria-label="dificultades" style="width:6vw">
+ <option selected>@ViewBag.Dificultades[0].nombre</option>
+@for(int i = 1; i<ViewBag.Dificultades.Count;i++){
 
+  <option value='@ViewBag.Dificultades[i].nombre'>@ViewBag.Dificultades[i].nombre</option>
+
+}
+</select>
+</div>
+<div class="configuracion">
+<p>Username: </p>
+<div class="centrar" style="margin-top:0;">
+<div class="mb-3">
+  <input type="text" class="form-control" id="exampleFormControlInput1" style="width:6vw">
+</div>
+</div>
+</div>
+
+<input type="submit" value="s">
 </form>
+</div>

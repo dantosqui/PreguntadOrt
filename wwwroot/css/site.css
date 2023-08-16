@@ -37,3 +37,19 @@ footer {
 #boton button{
   width: 100%;
 }
+
+#preguntaycategoria{
+  display: flex;
+  
+}
+#preguntaycategoria h1, h2{
+  align-self: center;
+}
+#timer{
+  align-self: flex-end;
+}
+
+
+.configuracion{
+  margin-top: 5vw;
+}

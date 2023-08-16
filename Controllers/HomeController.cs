@@ -27,9 +27,12 @@ public class HomeController : Controller
 
 
     public IActionResult Jugar(){
-        
-        ViewBag.NumPregunta=Juego.DevolverCantPreguntas();
+        string username=""; int puntajeActual=0, cantpregs=0;
+        Juego.ObtenerInfoJugador(ref username,ref puntajeActual,ref cantpregs);
+        ViewBag.NumPregunta=cantpregs;
         ViewBag.Pregunta = Juego.ObtenerProximaPregunta();
+        ViewBag.Username=username;
+        ViewBag.Puntaje=puntajeActual;
         if(ViewBag.Pregunta != null /*nose despues vemos*/){
         ViewBag.Respuestas = Juego.ObtenerProximasRespuestas(ViewBag.Pregunta.IdPregunta);
         return RedirectToAction("Juego"); 

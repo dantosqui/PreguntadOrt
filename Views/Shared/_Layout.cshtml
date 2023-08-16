@@ -9,10 +9,12 @@
     </head>
     <body>
         <header style="display: flex; flex-direction: row; margin: 0; align-items:stretch; justify-content: space-between;"> 
-            <img src="~/img/logo.png" style="left: 0; width: 6%; margin: 0; margin-left: 1%;">
+            <img src="~/img/logo.png" style="left: 0; width: 6%; margin: 0; margin-left: 1%; min-height: 50px;">
             
-            <nav style="width: 70%; border-bottom: 2px solid black; text-align: center; padding: 0;">
+            <nav style="width: 80%;text-align: center; padding: 0;">
+                <div style="border-bottom: 8px solid rgb(41, 197, 93); padding-bottom:20px">
                 <a href='@Url.Action("ConfigurarJuego")' style="text-align: center; font-size: 200%; margin: 0 auto; padding: 0;">Jugar</a>
+                </div>
             </nav>
 
             <div style="right: 0; width: 7.5%; margin: 0;">

@@ -47,12 +47,12 @@ static public class Juego{
         return rtaenviadaycorrecta; 
     }
 
-   static public int DevolverCantPreguntas(){
-        return _cantidadPreguntasCorrectas;
-   }
-   static public Categorias DevolverCategoriaPregunta(Pregunta preg){
-        ;
+   static public Categorias DevolverCategoriaPregunta(Preguntas preg){
+        return ObtenerCategorias().Find(x=>x.IdCategoria==preg.IdCategoria);
 
    }
+    static public void ObtenerInfoJugador(ref string username, ref int puntajeActual, ref int cantpreguntas){
+        username=_username;puntajeActual=_puntajeActual;cantpreguntas=_cantidadPreguntasCorrectas;
+    }
     
 }
