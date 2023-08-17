@@ -12,9 +12,17 @@
 
 <div id="preguntayrtas">
     <h1>@ViewBag.Pregunta.Enunciado</h1>
-    <form action="@Url.Action(VerificarRespuesta)">
+    <form action='@Url.Action("VerificarRespuesta",new {idPregunta=ViewBag.Pregunta.IdPregunta})' method="post">
     <div id="rtas">
-
+        @for (int i=0; i<4;i++){
+            <input type=radio value="@ViewBag.Respuestas[i].IdRespuesta" name="idRespuesta"> @ViewBag.Respuestas[i].Contenido
+        }
     </div>
+
+    <input type="submit" class="btn btn-primary">
     </form>
+</div>
+<div id="info">
+    <p>Puntaje: @ViewBag.Puntaje</p>
+    <p>Usuario: @ViewBag.Username</p>
 </div>

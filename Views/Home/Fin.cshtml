@@ -1,0 +1,10 @@
+@{
+    ViewData["Title"] = "el fin";
+}
+
+<h1>Usuario: @ViewBag.Username</h1>
+<h1>Puntaje Final: @ViewBag.Puntaje</h1>
+
+<a href='@Url.Action("ConfigurarJuego")' id="boton">
+        <button type="button" class="btn btn-outline-success">Comenzar</button>
+</a>

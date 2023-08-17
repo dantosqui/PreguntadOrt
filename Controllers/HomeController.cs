@@ -35,7 +35,7 @@ public class HomeController : Controller
         ViewBag.Puntaje=puntajeActual;
         if(ViewBag.Pregunta != null /*nose despues vemos*/){
         ViewBag.Respuestas = Juego.ObtenerProximasRespuestas(ViewBag.Pregunta.IdPregunta);
-        return RedirectToAction("Juego"); 
+        return RedirectToAction("Jugar"); 
        
         }else{
             return View("Fin");
@@ -46,7 +46,10 @@ public class HomeController : Controller
 
     [HttpPost] public IActionResult VerificarRespuesta(int idPregunta, int idRespuesta){
         Respuestas[] resps = Juego.VerificarRespuesta(idPregunta,idRespuesta);
-
+        string username=""; int puntajeActual=0, cantpregs=0;
+        Juego.ObtenerInfoJugador(ref username,ref puntajeActual,ref cantpregs);
+        ViewBag.Username=username;
+        ViewBag.Puntaje=puntajeActual;
         if(resps[0] == resps[1]){
 
             ViewBag.Correcta = true;
