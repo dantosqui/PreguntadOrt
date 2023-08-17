@@ -35,7 +35,12 @@ public class HomeController : Controller
         ViewBag.Puntaje=puntajeActual;
         if(ViewBag.Pregunta != null /*nose despues vemos*/){
         ViewBag.Respuestas = Juego.ObtenerProximasRespuestas(ViewBag.Pregunta.IdPregunta);
-        return RedirectToAction("Jugar"); 
+        foreach (var i in BD.ObtenerCategorias()){
+            if (i.IdCategoria==ViewBag.Pregunta.IdCategoria){
+                ViewBag.Categoria=i.Nombre;
+            }
+        }
+        return View("Juego"); 
        
         }else{
             return View("Fin");

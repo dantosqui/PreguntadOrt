@@ -22,16 +22,18 @@ static public class Juego{
         _respuestas=BD.ObtenerRespuestas(_preguntas);
     }
     static public Preguntas ObtenerProximaPregunta(){
-        return _preguntas[rnd.Next(0,_preguntas.Count())];
+        if (_preguntas.Any()){
+        return _preguntas[rnd.Next(0,_preguntas.Count)];
+        }
+        else return null;
     }
     static public List<Respuestas> ObtenerProximasRespuestas(int idPregunta){
         
         List<Respuestas> respuestas = new List<Respuestas>();
-        int i=-1;
-        bool enc=false;
-        while (i<_respuestas.Count()){
-            i++;
-            if(_respuestas[i].IdPregunta==idPregunta)respuestas.Add(respuestas[i]);
+        
+        foreach (var i in _respuestas){
+            if(i.IdPregunta==idPregunta)
+            respuestas.Add(i);
         }
         return respuestas;
     }

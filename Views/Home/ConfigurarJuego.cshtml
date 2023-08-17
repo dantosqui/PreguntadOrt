@@ -2,24 +2,24 @@
     ViewData["Title"] = "Index";
 }
 <div class="centrar">
-<form>
+<form method="get" action='@Url.Action("Comenzar")'>
 
 <p>Categorias: </p>
-<select class="form-select" aria-label="categorias" style="width:6vw">
- <option selected>@ViewBag.Categorias[0].Nombre</option>
+<select class="form-select" aria-label="categorias" style="width:6vw" name="categoria">
+ <option value="@ViewBag.Categorias[0].IdCategoria" selected>@ViewBag.Categorias[0].Nombre</option>
 @for(int i = 1; i<ViewBag.Categorias.Count;i++){
 
-  <option value='@ViewBag.Categorias[i].Nombre'>@ViewBag.Categorias[i].Nombre</option>
+  <option value='@ViewBag.Categorias[i].IdCategoria'>@ViewBag.Categorias[i].Nombre</option>
 
 }
 </select>
 <div class="configuracion">
 <p>Dificultades: </p>
-<select class="form-select" aria-label="dificultades" style="width:6vw">
- <option selected>@ViewBag.Dificultades[0].nombre</option>
+<select class="form-select" aria-label="dificultades" style="width:6vw" name="dificultad">
+ <option value="@ViewBag.Dificultades[0].IdDificultad" selected>@ViewBag.Dificultades[0].nombre</option>
 @for(int i = 1; i<ViewBag.Dificultades.Count;i++){
 
-  <option value='@ViewBag.Dificultades[i].nombre'>@ViewBag.Dificultades[i].nombre</option>
+  <option value='@ViewBag.Dificultades[i].IdDificultad'>@ViewBag.Dificultades[i].nombre</option>
 
 }
 </select>
@@ -28,11 +28,11 @@
 <p>Username: </p>
 <div class="centrar" style="margin-top:0;">
 <div class="mb-3">
-  <input type="text" class="form-control" id="exampleFormControlInput1" style="width:6vw">
+  <input type="text" class="form-control" id="exampleFormControlInput1" style="width:6vw" name="username">
 </div>
 </div>
 </div>
 
-<input type="submit" value="s">
+<input type="submit" value="Confirmar">
 </form>
 </div>
