@@ -61,7 +61,7 @@ public class HomeController : Controller
         }else
         {
             ViewBag.Correcta = false;
-            ViewBag.RespuestaCorrecta = resps[1];
+            ViewBag.RespuestaCorrecta = resps[1].Contenido;
         }
         return View("Respuesta");
     }

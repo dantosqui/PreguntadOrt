@@ -40,12 +40,14 @@ static public class Juego{
     static public Respuestas[] VerificarRespuesta(int idPregunta, int idRespuesta){
         Respuestas rtaEnviada= _respuestas.Find(x=>x.IdRespuesta==idRespuesta);
         if (rtaEnviada.Correcta){
-            _puntajeActual++;
+            _puntajeActual+=10;
             _cantidadPreguntasCorrectas++;
-            _preguntas.Remove(_preguntas.Find(x=>x.IdPregunta==idPregunta));
+            
         }
         //ACORDARSE: MANDA PRIMERO RESPUESTA ENVIADA Y DESPUES RESPUESTA CORRECTA
         Respuestas[] rtaenviadaycorrecta = {rtaEnviada, _respuestas.Find(x=>x.IdPregunta==idPregunta && x.Correcta)};
+        
+        _preguntas.Remove(_preguntas.Find(x=>x.IdPregunta==idPregunta));
         return rtaenviadaycorrecta; 
     }
 

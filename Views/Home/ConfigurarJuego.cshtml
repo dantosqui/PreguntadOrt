@@ -4,12 +4,14 @@
 
 <div class="centrar">
     <form method="get" action='@Url.Action("Comenzar")'>
+
       <div id="formconfig">
         
-      <div class="configuracion">
-      <p>Categorias: </p>
+      <div class="configuracion form-floating" id="catgs">
+
 
       <select class="form-select" aria-label="categorias" style="width:6vw" name="categoria">
+
         <option value="@ViewBag.Categorias[0].IdCategoria" selected>@ViewBag.Categorias[0].Nombre</option>
 
         @for(int i = 1; i<ViewBag.Categorias.Count;i++){
@@ -20,11 +22,11 @@
 
         }
       </select>
+      <label for="catgs">Categoría</label>
       </div>
 
-      <div class="configuracion">
+      <div class="configuracion form-floating" id="difs">
 
-        <p>Dificultades: </p>
 
         <select class="form-select" aria-label="dificultades" style="width:6vw" name="dificultad">
           <option value="@ViewBag.Dificultades[0].IdDificultad" selected>@ViewBag.Dificultades[0].nombre</option>
@@ -35,17 +37,17 @@
 
           }
         </select>
+        <label for="difs">Dificultad</label>
       </div>
-      <div class="configuracion">
-        <p>Username: </p>
-
+      <div class="configuracion form-floating mb-3">
        
-          
-            <input type="text" class="form-control" id="exampleFormControlInput1" style="width:6vw" name="username">
+            <input type="text" class="form-control" id="username" style="width:6vw" name="username" placeholder="usuarioejemplo" required>
+            <label for="username">Username</label>
+
           
     
       </div>
     </div>
-    <input type="submit" value="Confirmar" class="btn btn-outline-success" id="btnconfig">
+    <input type="submit" value="Confirmar" class="btnw btn btn-outline-success" id="btnconfig">
   </form>
 </div>
