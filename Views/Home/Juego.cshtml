@@ -3,7 +3,7 @@
 }
 
 <div id="preguntaycategoria">
-    <h2>Pregunta @ViewBag.NumPregunta</h2> 
+    <h2>Pregunta @ViewBag.NumPregunta</h2> <br> 
     <h3>Categoria: @ViewBag.Categoria</h3>
     <div id="timer">
         <div id="countdown"></div>
@@ -13,10 +13,12 @@
 <div id="preguntayrtas">
     <h1>@ViewBag.Pregunta.Enunciado</h1>
     <form action='@Url.Action("VerificarRespuesta",new {idPregunta=ViewBag.Pregunta.IdPregunta})' method="post">
-    <div id="rtas">
-        @for (int i=0; i<4;i++){
-            <input type=radio value="@ViewBag.Respuestas[i].IdRespuesta" name="idRespuesta"> @ViewBag.Respuestas[i].Contenido
-        }
+    <div class="centrar">
+        <div id="rtas">
+            @for (int i=0; i<4;i++){
+               <div class="rta"> <input type=radio value="@ViewBag.Respuestas[i].IdRespuesta" name="idRespuesta"> <label>@ViewBag.Respuestas[i].Contenido</label></div>
+            }
+        </div>
     </div>
 
     <input type="submit" class="btn btn-primary">

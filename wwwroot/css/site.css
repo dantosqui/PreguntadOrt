@@ -38,18 +38,48 @@ footer {
   width: 100%;
 }
 
-#preguntaycategoria{
-  display: flex;
+
+
+.configuracion{
+  flex-shrink: 1;
   
 }
-#preguntaycategoria h1, h2{
+form{
+ width: 100%;
+}
+#formconfig{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.btn{
+  width: 30%;
+}
+
+#btnconfig{
+  margin-top: 20%;
+}
+#preguntaycategoria{
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2vw;
+}
+#preguntaycategoria h3, h2{
   align-self: center;
 }
 #timer{
   align-self: flex-end;
 }
 
+#preguntayrtas{
+  text-align: center;
+}
 
-.configuracion{
-  margin-top: 5vw;
+#rtas{
+  width: 50%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }

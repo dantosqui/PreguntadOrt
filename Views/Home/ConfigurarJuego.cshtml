@@ -1,38 +1,51 @@
 @{
     ViewData["Title"] = "Index";
 }
+
 <div class="centrar">
-<form method="get" action='@Url.Action("Comenzar")'>
+    <form method="get" action='@Url.Action("Comenzar")'>
+      <div id="formconfig">
+        
+      <div class="configuracion">
+      <p>Categorias: </p>
 
-<p>Categorias: </p>
-<select class="form-select" aria-label="categorias" style="width:6vw" name="categoria">
- <option value="@ViewBag.Categorias[0].IdCategoria" selected>@ViewBag.Categorias[0].Nombre</option>
-@for(int i = 1; i<ViewBag.Categorias.Count;i++){
+      <select class="form-select" aria-label="categorias" style="width:6vw" name="categoria">
+        <option value="@ViewBag.Categorias[0].IdCategoria" selected>@ViewBag.Categorias[0].Nombre</option>
 
-  <option value='@ViewBag.Categorias[i].IdCategoria'>@ViewBag.Categorias[i].Nombre</option>
+        @for(int i = 1; i<ViewBag.Categorias.Count;i++){
+        
+        <option value='@ViewBag.Categorias[i].IdCategoria'>
+          <img src="@ViewBag.Categorias[i].Foto" alt="foto de la categoria"> @ViewBag.Categorias[i].Nombre
+        </option>
 
-}
-</select>
-<div class="configuracion">
-<p>Dificultades: </p>
-<select class="form-select" aria-label="dificultades" style="width:6vw" name="dificultad">
- <option value="@ViewBag.Dificultades[0].IdDificultad" selected>@ViewBag.Dificultades[0].nombre</option>
-@for(int i = 1; i<ViewBag.Dificultades.Count;i++){
+        }
+      </select>
+      </div>
 
-  <option value='@ViewBag.Dificultades[i].IdDificultad'>@ViewBag.Dificultades[i].nombre</option>
+      <div class="configuracion">
 
-}
-</select>
-</div>
-<div class="configuracion">
-<p>Username: </p>
-<div class="centrar" style="margin-top:0;">
-<div class="mb-3">
-  <input type="text" class="form-control" id="exampleFormControlInput1" style="width:6vw" name="username">
-</div>
-</div>
-</div>
+        <p>Dificultades: </p>
 
-<input type="submit" value="Confirmar">
-</form>
+        <select class="form-select" aria-label="dificultades" style="width:6vw" name="dificultad">
+          <option value="@ViewBag.Dificultades[0].IdDificultad" selected>@ViewBag.Dificultades[0].nombre</option>
+
+          @for(int i = 1; i<ViewBag.Dificultades.Count;i++){
+          
+            <option value='@ViewBag.Dificultades[i].IdDificultad'>@ViewBag.Dificultades[i].nombre</option>
+
+          }
+        </select>
+      </div>
+      <div class="configuracion">
+        <p>Username: </p>
+
+       
+          
+            <input type="text" class="form-control" id="exampleFormControlInput1" style="width:6vw" name="username">
+          
+    
+      </div>
+    </div>
+    <input type="submit" value="Confirmar" class="btn btn-outline-success" id="btnconfig">
+  </form>
 </div>
