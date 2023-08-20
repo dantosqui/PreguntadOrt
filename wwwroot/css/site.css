@@ -10,6 +10,10 @@ html {
   }
 }
 
+body{
+  background-color: whitesmoke;
+}
+
 footer {
   position: fixed; 
   bottom: 0; 
@@ -101,6 +105,24 @@ form{
   margin-bottom: 5vw;
 }
 
-#info{
+#inforta h1{
+  font-size: 60px;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   
+}
+
+#inforta p{
+  font-size:30px;
+}
+
+a{
+  height: fit-content;
+  text-decoration: none;
+}
+
+#correcto h1{
+  color: rgb(6, 78, 6);
+}
+#incorrecto h1{
+  color:rgb(117, 34, 24);
 }

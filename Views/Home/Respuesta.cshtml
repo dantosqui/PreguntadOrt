@@ -1,23 +1,30 @@
-<div id="inforta">
-@if(ViewBag.Correcta){
-    <h1>CORRECTO!</h1>
-    <style>body{background-color:rgb(63, 104, 63);}</style>
-    <img src="">
-    <p>+10 Puntos!</p>
-}
-else{
-    <h1>INCORRECTO!</h1>
-    <style>body{background-color:rgb(227, 104, 59);}</style>
-    <img src="">
-    <p>Respuesta correcta: @ViewBag.RespuestaCorrecta</p>
-}
+<div class="centrar">
+    <div id="inforta">
+        @if(ViewBag.Correcta){
+            <div id="correcto">
+                <h1><b>CORRECTO!</b></h1>
+                <style>body{background-color:rgb(112, 184, 154);}</style>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Allowed.svg/120px-Allowed.svg.png" height="50%">
+                <p>+10 Puntos!</p>
+            </div>
+        }
+        else{
+            <div id="incorrecto">
+                <h1>INCORRECTO!</h1>
+                <style>body{background-color:rgb(230, 109, 109);}</style>
+                <img src="https://static.vecteezy.com/system/resources/previews/019/899/981/non_2x/red-x-free-download-free-png.png" height="200px">
+                <p>Respuesta correcta: @ViewBag.RespuestaCorrecta</p>
+            </div>
+        }
+    </div>
 </div>
-
 <div>
     <p>Puntos: @ViewBag.Puntaje</p>
     <p>Usuario: @ViewBag.Username</p>
 </div>
 
-<a href='@Url.Action("Jugar")' id="boton" class="centrar">
-    <button type="button" class="btn btn-outline-success">Siguiente pregunta</button>
-</a>
+<div class="centrar">
+    <a href='@Url.Action("Jugar")' id="boton" class="btnw">
+        <button type="button" class="btn btn-outline-success btnw">Siguiente pregunta</button>
+    </a>
+</div>
