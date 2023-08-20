@@ -1,3 +1,5 @@
+
+
 <div class="centrar">
     <div id="inforta">
         @if(ViewBag.Correcta){
@@ -18,13 +20,19 @@
         }
     </div>
 </div>
-<div>
-    <p>Puntos: @ViewBag.Puntaje</p>
-    <p>Usuario: @ViewBag.Username</p>
-</div>
+
 
 <div class="centrar">
     <a href='@Url.Action("Jugar")' id="boton" class="btnw">
         <button type="button" class="btn btn-outline-success btnw">Siguiente pregunta</button>
     </a>
+</div>
+
+
+<div id="info" style="position:absolute;top:0;margin-top:7vw">
+    <div class="card" style="width: 18rem;">
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">@ViewBag.Puntaje Puntos</li>
+    <li class="list-group-item">@ViewBag.Username</li>
+  </ul>
 </div>

@@ -11,27 +11,29 @@
 </div>
 
 <!-- no se donde poner la info pero la card a mi me gusta asi que bueno lo dejo asi por ahora -->
-<div id="info">
-    <div class="card" style="width: 18rem;">
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item">@ViewBag.Puntaje Puntos</li>
-    <li class="list-group-item">@ViewBag.Username</li>
-  </ul>
-</div>
 
+<div class="centrar">
 <div id="preguntayrtas">
     <h1>@ViewBag.Pregunta.Enunciado</h1>
     <form action='@Url.Action("VerificarRespuesta",new {idPregunta=ViewBag.Pregunta.IdPregunta})' method="post">
-    <div class="centrar" id="contenedorrtas">
-        <div id="rtas">
+    <div class="centrar" id="contenedorrtas" >
+        <div id="rtas"style="width: 60vw">
             <div class="mitadrtas">
+                <div class=centrar>
                 <div class="rta"> <input class="btn-check" id="op1" type=radio value="@ViewBag.Respuestas[0].IdRespuesta" name="idRespuesta" checked> <label class="btn btn-outline-info" for="op1">@ViewBag.Respuestas[0].Contenido</label></div>
+                </div>
+                 <div class=centrar>
                 <div class="rta"> <input class="btn-check" id="op2" type=radio value="@ViewBag.Respuestas[1].IdRespuesta" name="idRespuesta"> <label class="btn btn-outline-info" for="op2">@ViewBag.Respuestas[1].Contenido</label></div>
+                </div>            
             </div>
 
             <div class="mitadrtas">
+                <div class=centrar>
                 <div class="rta"> <input class="btn-check" id="op3" type=radio value="@ViewBag.Respuestas[2].IdRespuesta" name="idRespuesta"> <label class="btn btn-outline-info" for="op3">@ViewBag.Respuestas[2].Contenido</label></div>
+                </div>
+                <div class=centrar>
                 <div class="rta"> <input class="btn-check" id="op4" type=radio value="@ViewBag.Respuestas[3].IdRespuesta" name="idRespuesta"> <label class="btn btn-outline-info" for="op4">@ViewBag.Respuestas[3].Contenido</label></div>
+                </div>
             </div>
         </div>
     </div>
@@ -39,6 +41,13 @@
     <input type="submit" class="btn btn-outline-success btnw" value="Confirmar">
     </form>
 </div>
+</div>
 
-
+</div>
+<div id="info" style="position:absolute;top:0;margin-top:7vw">
+    <div class="card" style="width: 18rem;">
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">@ViewBag.Puntaje Puntos</li>
+    <li class="list-group-item">@ViewBag.Username</li>
+  </ul>
 </div>

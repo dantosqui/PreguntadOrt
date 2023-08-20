@@ -1,10 +1,14 @@
 @{
     ViewData["Title"] = "el fin";
 }
-
+<div class="centrar">
 <h1>Usuario: @ViewBag.Username</h1>
+</div>
+<div class="centrar">
 <h1>Puntaje Final: @ViewBag.Puntaje</h1>
-
+</div>
+<div class="centrar">
 <a href='@Url.Action("ConfigurarJuego")' id="boton">
         <button type="button" class="btn btn-outline-success">Comenzar</button>
 </a>
+</div>
