@@ -3,7 +3,8 @@
 }
 
 <div id="preguntaycategoria">
-    <h2>Pregunta @ViewBag.NumPregunta</h2> <br> 
+    <h2>Pregunta: @ViewBag.PreguntaNumero</h2> <br> 
+    <h2>Respuestas correctas: @ViewBag.NumPregunta</h2> <br> 
     <h3>Categoria: @ViewBag.Categoria</h3>
     <div id="timer">
         <div id="countdown"></div>
@@ -44,7 +45,7 @@
 </div>
 
 </div>
-<div id="info" style="position:absolute;top:0;margin-top:7vw">
+<div id="info" style="position:absolute;top:0;margin-top:9vw">
     <div class="card" style="width: 18rem;">
   <ul class="list-group list-group-flush">
     <li class="list-group-item">@ViewBag.Puntaje Puntos</li>

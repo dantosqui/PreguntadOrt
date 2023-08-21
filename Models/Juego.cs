@@ -2,6 +2,7 @@ static public class Juego{
     static private string _username;
     static private int _puntajeActual;
     static private int _cantidadPreguntasCorrectas;
+    static private int _preguntaNumero=1;
     static private List<Preguntas> _preguntas;
     static private List<Respuestas> _respuestas;
     static private Random rnd = new Random();
@@ -39,6 +40,7 @@ static public class Juego{
     }
     static public Respuestas[] VerificarRespuesta(int idPregunta, int idRespuesta){
         Respuestas rtaEnviada= _respuestas.Find(x=>x.IdRespuesta==idRespuesta);
+        _preguntaNumero++;
         if (rtaEnviada.Correcta){
             _puntajeActual+=10;
             _cantidadPreguntasCorrectas++;
@@ -55,8 +57,8 @@ static public class Juego{
         return ObtenerCategorias().Find(x=>x.IdCategoria==preg.IdCategoria);
 
    }
-    static public void ObtenerInfoJugador(ref string username, ref int puntajeActual, ref int cantpreguntas){
-        username=_username;puntajeActual=_puntajeActual;cantpreguntas=_cantidadPreguntasCorrectas;
+    static public void ObtenerInfoJugador(ref string username, ref int puntajeActual, ref int cantpreguntas, ref int preguntaNumero){
+        username=_username;puntajeActual=_puntajeActual;cantpreguntas=_cantidadPreguntasCorrectas;preguntaNumero=_preguntaNumero;
     }
     
 }

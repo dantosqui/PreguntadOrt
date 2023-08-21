@@ -1,0 +1,52 @@
+@{
+    ViewData["Title"] = "highscores";
+}
+<div class = "centrar">
+<h1>HighScores</h1>
+</div>
+<div class="container text-center" style="margin-top: 5vw;box-shadow: 0 0 2px;border-radius:10px">
+    <div class="row" >
+        <div class="col">
+            Top
+        </div>
+        <div class="col">
+            Usuario
+        </div>
+        <div class="col">
+            Puntaje
+        </div>
+        <div class="col">
+            Fecha
+        </div>
+    </div>
+
+    @for (int i = 1; i <= ViewBag.puntajes.Count; i++)
+    {
+ 
+        <div class="row" >
+            <div class="col">
+            @i
+        </div>
+            <div class="col">
+                @ViewBag.puntajes[i-1].Username
+            </div>
+            <div class="col">
+                @ViewBag.puntajes[i-1].PuntajeUsuario
+            </div>
+            <div class="col">
+                @ViewBag.puntajes[i-1].FechaHora
+            </div>
+        </div>
+
+
+
+    }
+
+
+</div>
+
+<div class="centrar"> 
+    <a href='@Url.Action("ConfigurarJuego")' id="boton" class="btnw">
+        <button type="button" class="btn btn-outline-success">Configurar juego</button>
+    </a>
+</div> 

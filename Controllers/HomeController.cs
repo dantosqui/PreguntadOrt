@@ -25,14 +25,15 @@ public class HomeController : Controller
         }
     }
 
-
     public IActionResult Jugar(){
-        string username=""; int puntajeActual=0, cantpregs=0;
-        Juego.ObtenerInfoJugador(ref username,ref puntajeActual,ref cantpregs);
+        string username=""; int puntajeActual=0, cantpregs=0, preguntaNumero=0;
+        Juego.ObtenerInfoJugador(ref username,ref puntajeActual,ref cantpregs, ref preguntaNumero);
+        
         ViewBag.NumPregunta=cantpregs;
         ViewBag.Pregunta = Juego.ObtenerProximaPregunta();
         ViewBag.Username=username;
         ViewBag.Puntaje=puntajeActual;
+        ViewBag.PreguntaNumero=preguntaNumero;
         if(ViewBag.Pregunta != null /*nose despues vemos*/){
         ViewBag.Respuestas = Juego.ObtenerProximasRespuestas(ViewBag.Pregunta.IdPregunta);
         foreach (var i in BD.ObtenerCategorias()){
@@ -40,19 +41,26 @@ public class HomeController : Controller
                 ViewBag.Categoria=i.Nombre;
             }
         }
+        
         return View("Juego"); 
        
         }else{
+            BD.AgregarTablaPuntajes(ViewBag.Puntaje, username, DateTime.Now);
             return View("Fin");
+
         }
         
         
     }
+    public IActionResult HighScores(){
+ViewBag.puntajes = BD.ObtenerPuntaje();
+        return View();
+    }
 
     [HttpPost] public IActionResult VerificarRespuesta(int idPregunta, int idRespuesta){
         Respuestas[] resps = Juego.VerificarRespuesta(idPregunta,idRespuesta);
-        string username=""; int puntajeActual=0, cantpregs=0;
-        Juego.ObtenerInfoJugador(ref username,ref puntajeActual,ref cantpregs);
+        string username=""; int puntajeActual=0, cantpregs=0, preguntaNumero=0;
+        Juego.ObtenerInfoJugador(ref username,ref puntajeActual,ref cantpregs, ref preguntaNumero);
         ViewBag.Username=username;
         ViewBag.Puntaje=puntajeActual;
         if(resps[0] == resps[1]){

@@ -64,4 +64,29 @@ public static List<Respuestas> ObtenerRespuestas(List<Preguntas> preguntas){
   
 }
 
+
+public static void AgregarTablaPuntajes(int puntaje, string username, DateTime fechaHora){
+
+    string SQL = "insert into Puntajes(fechahora,username,puntaje) values (@fH, @u, @p)";
+
+    using(SqlConnection db = new SqlConnection(_connectionString)){
+        db.Execute(SQL, new {fH = fechaHora, u = username, p = puntaje});
+    }
+}
+
+public static List<Puntaje> ObtenerPuntaje(){
+    List<Puntaje> ps = new List<Puntaje>();
+   using(SqlConnection db = new SqlConnection(_connectionString)){
+        string sql = "SELECT top 5 * FROM Puntajes order by Puntajes.puntaje desc";
+        ps = db.Query<Puntaje>(sql).ToList(); 
+        sql = "select top 5 Puntajes.puntaje from Puntajes order by Puntajes.puntaje desc";
+        List<int> lInt = db.Query<int>(sql).ToList();
+        for(int i = 0; i < ps.Count; i++){
+            ps[i].PuntajeUsuario = lInt[i];
+        }
+
+    }
+    return ps;
+}
+
 }
