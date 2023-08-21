@@ -1,8 +1,8 @@
 using System.Data.SqlClient;
 using Dapper;
 
-public class BD{ //EL SERVER LO CAMBIO PARA Q ME ANDE EN MI COMPU, SI LO PRUEBAN EN EL COLE PONGAN localhost
-private static string _connectionString = @"Server=DESKTOP-U0GD7V4\SQLEXPRESS;
+public class BD{ 
+private static string _connectionString = @"Server=localhost\SQLEXPRESS;
 DataBase =PreguntadOrt;Trusted_Connection=True;";
 
 public static List<Categorias> ObtenerCategorias(){
