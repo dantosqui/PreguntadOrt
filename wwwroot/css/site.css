@@ -56,6 +56,11 @@ form{
   flex-direction: row;
   justify-content: space-around;
 }
+.formconfig{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
 
 .btnw{
   width: 30%;
@@ -126,4 +131,35 @@ a{
 }
 #incorrecto h1{
   color:rgb(117, 34, 24);
+}
+
+
+
+
+
+
+
+.timer-container {
+  position: relative;
+}
+
+.timer {
+  font-size: 3rem;
+  color: green;
+}
+
+.timer.expired {
+  color: red;
+  animation: breathe 2s infinite;
+}
+
+@keyframes breathe {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.1);
+  }
 }

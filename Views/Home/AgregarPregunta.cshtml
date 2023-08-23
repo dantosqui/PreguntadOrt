@@ -1,11 +1,11 @@
 @{
-    ViewData["Title"] = "Configuracion";
+    ViewData["Title"] = "Agregar Pregunta";
 }
 <div style="margin-top:7%">
 <div class="centrar" >
-    <form method="get" action='@Url.Action("Comenzar")' style="width:60vw" >
+    <form method="get" action='@Url.Action("CrearPregunta","BackOfficeController")' style="width:60vw" >
 
-      <div id="formconfig">
+      <div class="formconfig">
         
       <div class="configuracion form-floating" id="catgs" style="overflow:hidden">
 
@@ -45,27 +45,36 @@
       </div>
       <div class="configuracion form-floating mb-3" style="overflow:hidden">
        
-            <input type="text" class="form-control" id="username" style="width:10vw" name="username" required>
-            <label for="username">Username</label>
+            <input type="text" class="form-control" id="username" style="width:10vw" name="Enunciado" placeholder="usuarioejemplo" required>
+            <label for="enunciado">Enunciado</label>
 
-          
     
       </div>
     </div>
+
+    <div class="formconfig">
+    @for (int i=0;i<4;i++){
+        <div class="configuracion form-floating mb-3" style="overflow:hidden">
+       
+            <input type="text" class="form-control" id="username" style="width:10vw" name="EnunciadoRespuestas[@i]" placeholder="usuarioejemplo" required>
+            <label for="username">Pregunta @i</label>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" value="@i" name="Correcta" id="flexRadioDefault1">
+              <label class="form-check-label" for="flexRadioDefault1">
+                Correcta
+              </label>
+            </div>
+
+    
+      </div>
+    }
+    </div>
+
+
+
     <input type="submit" value="Confirmar" class="btnw btn btn-outline-success" id="btnconfig">
 
   </form>
 
 </div> 
-
- <div class="centrar" style="margin-top: 2vw;" >
- <form action='@Url.Action("HighScores")' style="width:60vw">
-    <input type="submit" value="Ver HighScores" class="btnw btn btn-outline-success" id="btnconfig" style="margin-top:0">
-  </form>
-  </div>
-
-  <div class="centrar" style="margin-top:2vw;">
-    <a href='@Url.Action("AgregarPregunta", "BackOfficeController")' id="boton" class="btnw">
-        <button type="button" class="btn btn-outline-success">Añadir pregunta</button>
-    </a>
-  </div>
+</div>

@@ -1,31 +1,50 @@
-﻿
-<p id="countdown"></p>
+﻿const timerElement = document.getElementById('timer');
+const timerTextElement = document.getElementById('timer-text');
 
-// Set the date we're counting down to
-var countDownDate = new Date("00:00:10").getTime();
+let remainingTime = parseInt(localStorage.getItem('remainingTime')) || 15;
+let countdownInterval;
 
-// Update the count down every 1 second
-var x = setInterval(function() {
+function startCountdown() {
+    countdownInterval = setInterval(() => {
+        remainingTime--;
 
-  // Get today's date and time
-  var now = new Date().getTime();
+        if (remainingTime <= 5) {
+            timerElement.classList.add('expired');
+        }
 
-  // Find the distance between now and the count down date
-  var distance = countDownDate - now;
+        updateTimerDisplay();
 
-  // Time calculations for days, hours, minutes and seconds
-  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        if (remainingTime <= 0) {
+            clearInterval(countdownInterval);
+            localStorage.removeItem('remainingTime');
+            const actionUrl = timerElement.getAttribute('data-action-url');
+            window.location.href = actionUrl; // Redirige a la página de respuesta
+        }
+    }, 1000);
+}
 
-  // Display the result in the element with id="demo"
-  document.getElementById("countdown").innerHTML = days + "d " + hours + "h "
-  + minutes + "m " + seconds + "s ";
+function updateTimerDisplay() {
+    timerTextElement.textContent = remainingTime;
+}
 
-  // If the count down is finished, write some text
-  if (distance < 0) {
-    clearInterval(x);
-    document.getElementById("countdown").innerHTML = "EXPIRED";
-  }
-}, 1000);
+function resetTimer() {
+    remainingTime = 15;
+    updateTimerDisplay();
+    localStorage.removeItem('remainingTime');
+}
+
+// Check if it's the response or index page
+if (window.location.href.includes('Respuesta')) {
+    resetTimer();
+} else if (window.location.href.includes('Index')) {
+    resetTimer();
+} else if (window.location.href.includes('Juego')) {
+    timerElement.style.display = 'block'; // Mostrar el temporizador en la vista de juego
+    startCountdown();
+}
+
+window.onbeforeunload = () => {
+    if (!window.location.href.includes('Juego')) {
+        localStorage.setItem('remainingTime', remainingTime.toString());
+    }
+};

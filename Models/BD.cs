@@ -89,21 +89,30 @@ public static List<Puntaje> ObtenerPuntaje(){
     return ps;
 }
 
-/*
-public static int AgregarPregunta(int IdCategoria_,int IdDificultad_,String Enunciado){
 
+public static List<int> AgregarPregunta(int IdCategoria,int IdDificultad,String Enunciado){
+
+List<int> idpreg = new List<int>();
     string SQL ="INSERT INTO Preguntas(IdCategoria,IdDificultad,Enunciado) VALUES (@pidcat, @piddif, @penun)";
     using(SqlConnection db = new SqlConnection(_connectionString))
     {
         db.Execute(SQL,new{pidcat=IdCategoria,piddif=IdDificultad,penun=Enunciado});
     }
     using(SqlConnection db=new SqlConnection(_connectionString)){
-        string sql = "SELECT IdPregunta FROM Preguntas WHERE Enunciado=@en"
-        idpreg=db.Query<
+        string sql = "SELECT IdPregunta FROM Preguntas WHERE Enunciado=@en";
+        idpreg=db.Query<int>(sql, new {en=Enunciado}).ToList();
     }
-    
+    return idpreg;
 
 }
-*/
+
+public static void CargarRespuesta(string enunciado, bool Correcta, int Opcion, int IdPregunta){
+    string SQL ="INSERT INTO Respuestas(IdPregunta,Opcion,Contenido, Correcta) VALUES (pidpr,pop,pen,pco)";
+    using(SqlConnection db = new SqlConnection(_connectionString))
+    {
+        db.Execute(SQL,new{pen=enunciado,pco=Correcta,pop=Opcion,pidpr=IdPregunta});
+    }
+}
+
 
 }
