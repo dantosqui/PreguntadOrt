@@ -1,42 +1,31 @@
-﻿function countdown(elementName, minutes, seconds) {
-    var element, endTime, hours, mins, msLeft, time;
-  
-    function twoDigits(n) {
-      return n <= 9 ? "0" + n : n;
-    }
-  
-    function updateTimer() {
-      msLeft = endTime - Date.now();
-      if (msLeft < 1000) {
-        location.href = "/Home/Perdida";
-      } else {
-        time = new Date(msLeft);
-        hours = time.getUTCHours();
-        mins = time.getUTCMinutes();
-        element.innerHTML =
-          (hours ? hours + ":" + twoDigits(mins) : mins) +
-          ":" +
-          twoDigits(time.getUTCSeconds());
-        setTimeout(updateTimer, time.getUTCMilliseconds() + 500);
-      }
-    }
-    element = document.getElementById(elementName);
-    endTime = localStorage.getItem("endTime");
-    if (!endTime || hidden){
-      // Si no hay tiempo de finalización almacenado, se establece uno nuevo
-      endTime = Date.now() + 1000 * (60 * minutes + seconds) + 500;
-      localStorage.setItem("endTime", endTime);
-    } else {
-      
-      // Si hay un tiempo de finalización almacenado, se calcula el tiempo restante
-      endTime = parseInt(endTime, 10);
-    }
-    updateTimer();
+﻿
+<p id="countdown"></p>
+
+// Set the date we're counting down to
+var countDownDate = new Date("00:00:10").getTime();
+
+// Update the count down every 1 second
+var x = setInterval(function() {
+
+  // Get today's date and time
+  var now = new Date().getTime();
+
+  // Find the distance between now and the count down date
+  var distance = countDownDate - now;
+
+  // Time calculations for days, hours, minutes and seconds
+  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+  // Display the result in the element with id="demo"
+  document.getElementById("countdown").innerHTML = days + "d " + hours + "h "
+  + minutes + "m " + seconds + "s ";
+
+  // If the count down is finished, write some text
+  if (distance < 0) {
+    clearInterval(x);
+    document.getElementById("countdown").innerHTML = "EXPIRED";
   }
-  
-  if(hidden){
-    countdown("countdown", 00, 10);
-  }
-  
-  countdown("countdown", 00, 10);
-  
+}, 1000);

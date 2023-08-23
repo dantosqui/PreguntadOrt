@@ -10,6 +10,7 @@ static public class Juego{
     static public void InicializarJuego(){
         _username="";
         _puntajeActual=0;_cantidadPreguntasCorrectas=0;
+        _preguntaNumero = 1;
     }
     static public List<Categorias> ObtenerCategorias(){
         return BD.ObtenerCategorias();

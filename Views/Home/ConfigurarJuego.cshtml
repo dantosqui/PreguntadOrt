@@ -1,13 +1,13 @@
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Configuracion";
 }
-
-<div class="centrar">
-    <form method="get" action='@Url.Action("Comenzar")'>
+<div style="margin-top:5%">
+<div class="centrar" >
+    <form method="get" action='@Url.Action("Comenzar")' style="width:60vw" >
 
       <div id="formconfig">
         
-      <div class="configuracion form-floating" id="catgs">
+      <div class="configuracion form-floating" id="catgs" style="overflow:hidden">
 
 
       <select class="form-select" aria-label="categorias" style="width:6vw" name="categoria">
@@ -28,7 +28,7 @@
       <label for="catgs">Categoría</label>
       </div>
 
-      <div class="configuracion form-floating" id="difs">
+      <div class="configuracion form-floating" id="difs" style="overflow:hidden">
 
 
         <select class="form-select" aria-label="dificultades" style="width:6vw" name="dificultad">
@@ -41,9 +41,9 @@
           }
             <option value=-1 >Todas</option>
         </select>
-        <label for="difs">Dificultad</label>
+        <label for="difs" >Dificultad</label>
       </div>
-      <div class="configuracion form-floating mb-3">
+      <div class="configuracion form-floating mb-3" style="overflow:hidden">
        
             <input type="text" class="form-control" id="username" style="width:6vw" name="username" placeholder="usuarioejemplo" required>
             <label for="username">Username</label>
@@ -58,8 +58,9 @@
 
 </div> 
 
- <div class="centrar" style="margin-top: 2vw;">
- <form action='@Url.Action("HighScores")'>
+ <div class="centrar" style="margin-top: 2vw;" >
+ <form action='@Url.Action("HighScores")' style="width:60vw">
     <input type="submit" value="Ver HighScores" class="btnw btn btn-outline-success" id="btnconfig" style="margin-top:0">
   </form>
+  </div>
   </div>

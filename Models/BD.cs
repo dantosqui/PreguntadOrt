@@ -2,7 +2,7 @@ using System.Data.SqlClient;
 using Dapper;
 
 public class BD{ 
-private static string _connectionString = @"Server=localhost\SQLEXPRESS;
+private static string _connectionString = @"Server=localhost;
 DataBase =PreguntadOrt;Trusted_Connection=True;";
 
 public static List<Categorias> ObtenerCategorias(){
@@ -88,5 +88,22 @@ public static List<Puntaje> ObtenerPuntaje(){
     }
     return ps;
 }
+
+/*
+public static int AgregarPregunta(int IdCategoria_,int IdDificultad_,String Enunciado){
+
+    string SQL ="INSERT INTO Preguntas(IdCategoria,IdDificultad,Enunciado) VALUES (@pidcat, @piddif, @penun)";
+    using(SqlConnection db = new SqlConnection(_connectionString))
+    {
+        db.Execute(SQL,new{pidcat=IdCategoria,piddif=IdDificultad,penun=Enunciado});
+    }
+    using(SqlConnection db=new SqlConnection(_connectionString)){
+        string sql = "SELECT IdPregunta FROM Preguntas WHERE Enunciado=@en"
+        idpreg=db.Query<
+    }
+    
+
+}
+*/
 
 }

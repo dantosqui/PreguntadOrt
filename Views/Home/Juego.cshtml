@@ -1,5 +1,5 @@
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Preguntadort!";
 }
 
 <div id="preguntaycategoria">
@@ -7,15 +7,15 @@
     <h2>Respuestas correctas: @ViewBag.NumPregunta</h2> <br> 
     <h3>Categoria: @ViewBag.Categoria</h3>
     <div id="timer">
-        <div id="countdown"></div>
+        <p id="countdown"></p>
     </div>
-</div>
+</div> <!-- hola lo vas a hacer vos el superdesafio entonces'???-->
 
 <!-- no se donde poner la info pero la card a mi me gusta asi que bueno lo dejo asi por ahora -->
 
 <div class="centrar">
 <div id="preguntayrtas">
-    <h1>@ViewBag.Pregunta.Enunciado</h1>
+    <h1 style="width: 80%; margin: 0 auto;">@ViewBag.Pregunta.Enunciado</h1>
     <form action='@Url.Action("VerificarRespuesta",new {idPregunta=ViewBag.Pregunta.IdPregunta})' method="post">
     <div class="centrar" id="contenedorrtas" >
         <div id="rtas"style="width: 60vw">
