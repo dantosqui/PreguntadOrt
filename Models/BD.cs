@@ -3,7 +3,7 @@ using Dapper;
 
 public class BD{ 
 private static string _connectionString = @"Server=localhost;
-DataBase =PreguntadOrt;Trusted_Connection=True;";
+DataBase=PreguntadOrt;Trusted_Connection=True;";
 
 public static List<Categorias> ObtenerCategorias(){
     using(SqlConnection db = new SqlConnection(_connectionString)){
@@ -107,7 +107,7 @@ List<int> idpreg = new List<int>();
 }
 
 public static void CargarRespuesta(string enunciado, bool Correcta, int Opcion, int IdPregunta){
-    string SQL ="INSERT INTO Respuestas(IdPregunta,Opcion,Contenido, Correcta) VALUES (pidpr,pop,pen,pco)";
+    string SQL ="INSERT INTO Respuestas(IdPregunta,Opcion,Contenido, Correcta) VALUES (@pidpr,@pop,@pen,@pco)";
     using(SqlConnection db = new SqlConnection(_connectionString))
     {
         db.Execute(SQL,new{pen=enunciado,pco=Correcta,pop=Opcion,pidpr=IdPregunta});

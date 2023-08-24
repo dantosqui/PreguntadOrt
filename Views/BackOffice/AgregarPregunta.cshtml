@@ -3,14 +3,14 @@
 }
 <div style="margin-top:7%">
 <div class="centrar" >
-    <form method="get" action='@Url.Action("CrearPregunta","BackOfficeController")' style="width:60vw" >
+    <form method="get" action='@Url.Action("CrearPregunta","BackOffice")' style="width:60vw" >
 
       <div class="formconfig">
         
       <div class="configuracion form-floating" id="catgs" style="overflow:hidden">
 
 
-      <select class="form-select" aria-label="categorias" style="width:10vw" name="categoria">
+      <select class="form-select" aria-label="categorias" style="width:10vw" name="IdCategoria">
 
         <option value="@ViewBag.Categorias[0].IdCategoria" selected>@ViewBag.Categorias[0].Nombre</option>
 
@@ -31,7 +31,7 @@
       <div class="configuracion form-floating" id="difs" style="overflow:hidden" >
 
 
-        <select class="form-select" aria-label="dificultades" style="width:10vw" name="dificultad">
+        <select class="form-select" aria-label="dificultades" style="width:10vw" name="IdDificultad">
           <option value="@ViewBag.Dificultades[0].IdDificultad" selected>@ViewBag.Dificultades[0].nombre</option>
 
           @for(int i = 1; i<ViewBag.Dificultades.Count;i++){
@@ -59,7 +59,7 @@
             <input type="text" class="form-control" id="username" style="width:10vw" name="EnunciadoRespuestas[@i]" placeholder="usuarioejemplo" required>
             <label for="username">Pregunta @i</label>
             <div class="form-check">
-              <input class="form-check-input" type="radio" value="@i" name="Correcta" id="flexRadioDefault1">
+              <input class="form-check-input" type="radio" value="@i+1" name="Correcta" id="flexRadioDefault1">
               <label class="form-check-label" for="flexRadioDefault1">
                 Correcta
               </label>

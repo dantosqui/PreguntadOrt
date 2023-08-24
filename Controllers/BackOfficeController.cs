@@ -15,13 +15,13 @@ public class BackOfficeController : Controller
         List<int> idpreg=BD.AgregarPregunta(IdCategoria,IdDificultad,Enunciado);
 
         for(int i=0;i<4;i++){
-            if (i==Correcta){
+            if (i-1==Correcta){
             BD.CargarRespuesta(EnunciadoRespuestas[i], true, i,idpreg[0]);
             }
             else{
                 BD.CargarRespuesta(EnunciadoRespuestas[i],false, i,idpreg[0]);
             }
         }
-        return RedirectToAction("Index", "HomeController");
+        return RedirectToAction("Index", "Home");
     }
 }
