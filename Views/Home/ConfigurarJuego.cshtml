@@ -1,38 +1,67 @@
 @{
     ViewData["Title"] = "Configuracion";
 }
-<div style="margin-top:7%">
-<div class="centrar" >
-    <form method="get" action='@Url.Action("Comenzar")' style="width:60vw" >
 
-      <div id="formconfig">
+<!-- Comienzo Form -->
+    <div class="centrar">
+      <form id="configform" method="get" action='@Url.Action("Comenzar")'>
+        <h1 class="titulopag">Configuración del juego</h1>
+        <div id="formconfig">
+          <!-- Select 1 categorias -->
+
+          <div class="configuracion" id="catgs">
+            <div class="card">
+              <h2 class="card-header">Categoria</h2>
+
+              <div class="card-body">
+                <select
+                  class="form-select"
+                  size="6"
+                  aria-label="categorias"
+                  name="categoria"
+                >
+                <option value="@ViewBag.Categorias[0].IdCategoria" selected>@ViewBag.Categorias[0].Nombre</option>
+                  @for(int i = 1; i<ViewBag.Categorias.Count;i++){
         
-      <div class="configuracion form-floating" id="catgs" style="overflow:hidden">
-
-
-      <select class="form-select" aria-label="categorias" style="width:10vw" name="categoria">
-
-        <option value="@ViewBag.Categorias[0].IdCategoria" selected>@ViewBag.Categorias[0].Nombre</option>
-
-        @for(int i = 1; i<ViewBag.Categorias.Count;i++){
-        
-        <option value='@ViewBag.Categorias[i].IdCategoria'>
-          <img src="@ViewBag.Categorias[i].Foto" alt="foto de la categoria"> @ViewBag.Categorias[i].Nombre
-        </option>
+            <option value='@ViewBag.Categorias[i].IdCategoria'> @ViewBag.categoria[i].Nombre</option>
 
         }
-        <option value=-1>
-          Todas
-        </option>
-      </select>
-      <label for="catgs">Categoría</label>
-      </div>
-
-      <div class="configuracion form-floating" id="difs" style="overflow:hidden" >
+        <option value="-1">Todas</option>
+                </select>
+              </div>
+            </div>
+          </div>
 
 
-        <select class="form-select" aria-label="dificultades" style="width:10vw" name="dificultad">
-          <option value="@ViewBag.Dificultades[0].IdDificultad" selected>@ViewBag.Dificultades[0].nombre</option>
+        <!-- Input 2 username -->
+        <div class="configuracion">
+          <div class="card">
+            <h2 class="card-header">Usuario</h2>
+            <div class="card-body">
+          <input
+            type="text"
+            class="form-control"
+            id="username"
+            name="username"
+            required
+          />
+        </div>
+        </div>
+        </div>
+
+          <!-- Select 3 dificultad-->
+          <div class="configuracion" id="difs">
+            <div class="card">
+              <h2 class="card-header">Dificultad</h2>
+
+              <div class="card-body">
+                <select
+                  class="form-select"
+                  size="6"
+                  aria-label="dificultades"
+                  name="dificultad"
+                >
+                  <option value="@ViewBag.Dificultades[0].IdDificultad" selected>@ViewBag.Dificultades[0].nombre</option>
 
           @for(int i = 1; i<ViewBag.Dificultades.Count;i++){
           
@@ -40,33 +69,31 @@
 
           }
             <option value=-1 >Todas</option>
-        </select>
-        <label for="difs" >Dificultad</label>
-      </div>
-      <div class="configuracion form-floating mb-3" style="overflow:hidden">
-       
-            <input type="text" class="form-control" id="username" style="width:10vw" name="username" required>
-            <label for="username">Username</label>
+                </select>
+              </div>
+            </div>
+          </div>
 
-          
-    
+
+
+
+
       </div>
+    </form>
+  </div>
+  <div class="centrar">
+      <a href='@Url.Action("Comenzar")'>
+        <!-- Confirmar -->
+        <input
+          type="submit"
+          value="Jugar"
+          class="aligncenter btnw btn btn-outline-success"
+          id="btnconfig"
+        />
+      </a>
     </div>
-    <input type="submit" value="Confirmar" class="btnw btn btn-outline-success" id="btnconfig">
-
-  </form>
-
-</div> 
-
- <div class="centrar" style="margin-top: 2vw;" >
- <form action='@Url.Action("HighScores")' style="width:60vw">
-    <input type="submit" value="Ver HighScores" class="btnw btn btn-outline-success" id="btnconfig" style="margin-top:0">
-  </form>
-  </div>
+   
 
 
-<div class="centrar" style="margin-top: 2vw;" >
- <form action='@Url.Action("AgregarPregunta", "BackOffice")' style="width:60vw">
-    <input type="submit" value="Añadir pregunta" class="btnw btn btn-outline-success" id="btnconfig" style="margin-top:0">
-  </form>
-  </div>
+
+  
